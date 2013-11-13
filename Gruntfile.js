@@ -27,26 +27,14 @@ module.exports = function(grunt) {
       }
     },
 
-
     browserify: {
       all: {
-        src: ['js/*.js', '!js/jquery.js'],
+        src: ['js/*.js', '!js/jquery.js', '!js/bartest.js'],
         dest: 'dist/js/app.js'
       },
       options: {
         //transform: ['debowerify']
       }
-    },
-
-
-    concat: {
-      options: {
-        separator: ';',
-      },
-      dist: {
-        src: ['js/*.js', '!js/jquery.js'],
-        dest: 'dist/js/app.js',
-      },
     },
 
     copy: {
@@ -55,8 +43,6 @@ module.exports = function(grunt) {
         dest: 'dist/',
       },
     },
-
-
 
     connect: {
       options: {
