@@ -20,5 +20,8 @@
     "grunt-contrib-jshint": "~0.7.1",
     "browserify": "~2.35.1",
     "grunt-browserify": "~1.2.11"
+  },
+  "dependencies": {
+    "underscore": "~1.5.2"
   }
 }

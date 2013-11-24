@@ -1,20 +1,20 @@
 /**
-* A bar chart. Required data format:
-* [ { name : x-axis-bar-label, value : N }, ...]
-*
-*  Sample use:
-*  var bargraph = d3.select('#bargraph')
-*    .append('svg')
-*    .attr('width', line_w)
-*    .attr('height', line_h)
-*    .chart('CC-Barchart')
-*    .max(1.0);
-*  bargraph.draw(bardata);
-*  
-*/
+ * A bar chart. Required data format:
+ * [ { name : x-axis-bar-label, value : N }, ...]
+ *
+ *  Sample use:
+ *  var bargraph = d3.select('#bargraph')
+ *    .append('svg')
+ *    .attr('width', line_w)
+ *    .attr('height', line_h)
+ *    .chart('CC-Barchart')
+ *    .max(1.0);
+ *  bargraph.draw(bardata);
+ *
+ */
 
 var d3 = require('./d3shim.js');
-    var d3chart = require('../bower_components/d3.chart/d3.chart');
+var d3chart = require('../bower_components/d3.chart/d3.chart');
 
 d3.chart('BarChart', {
   initialize: function() {
@@ -28,15 +28,15 @@ d3.chart('BarChart', {
     // we may want to have setters for this
     // if we were letting the users customize this too
     chart.margins = {
-      top : 10,
-      bottom : 15,
-      left : 50,
-      right : 0,
-      padding : 10
+      top: 10,
+      bottom: 15,
+      left: 50,
+      right: 0,
+      padding: 10
     };
 
     // default chart ranges
-    chart.x =  d3.scale.linear()
+    chart.x = d3.scale.linear()
       .range([0, chart.w - chart.margins.left]);
 
     chart.y = d3.scale.linear()
@@ -62,13 +62,13 @@ d3.chart('BarChart', {
       .classed('ylabels', true)
       .attr('width', chart.margins.left)
       .attr('height', chart.h - chart.margins.bottom - chart.margins.top)
-      .attr('transform', 'translate('+(chart.margins.left-1)+',0)');
+      .attr('transform', 'translate(' + (chart.margins.left - 1) + ',0)');
 
     chart.areas.bars = chart.base.append('g')
       .classed('bars', true)
       .attr('width', chart.w - chart.margins.left)
       .attr('height', chart.h - chart.margins.bottom - chart.margins.top)
-      .attr('transform', 'translate(' + chart.margins.left + ',' + chart.margins.top+')');
+      .attr('transform', 'translate(' + chart.margins.left + ',' + chart.margins.top + ')');
 
     chart.areas.xlabels = chart.base.append('g')
       .classed('xlabels', true)
@@ -81,7 +81,7 @@ d3.chart('BarChart', {
     chart.layer('bars', chart.areas.bars, {
       // data format:
       // [ { name : x-axis-bar-label, value : N }, ...]
-      dataBind : function(data) {
+      dataBind: function(data) {
 
         // save the data in case we need to reset it
         chart.data = data;
@@ -97,8 +97,8 @@ d3.chart('BarChart', {
         chart.x.domain([0, chart.bars]);
 
         // adjust the y domain - find the max in the data.
-        chart.datamax = chart.usermax || d3.max(data, function(d) { 
-          return d.value; 
+        chart.datamax = chart.usermax || d3.max(data, function(d) {
+          return d.value;
         });
         chart.y.domain([0, chart.datamax]);
 
@@ -114,7 +114,7 @@ d3.chart('BarChart', {
         return this.selectAll('rect')
           .data(data);
       },
-      insert : function() {
+      insert: function() {
         return this.append('rect')
           .classed('bar', true);
       }
@@ -122,7 +122,7 @@ d3.chart('BarChart', {
 
     // a layer for the x text labels.
     chart.layer('xlabels', chart.areas.xlabels, {
-      dataBind : function(data) {
+      dataBind: function(data) {
         // first append a line to the top.
         this.append('line')
           .attr('x1', 0)
@@ -137,12 +137,12 @@ d3.chart('BarChart', {
         return this.selectAll('text')
           .data(data);
       },
-      insert : function() {
+      insert: function() {
         return this.append('text')
           .classed('label', true)
           .attr('text-anchor', 'middle')
           .attr('x', function(d, i) {
-            return chart.x(i) - 0.5 + chart.bar_width/2;
+            return chart.x(i) - 0.5 + chart.bar_width / 2;
           })
           .attr('dy', '1em')
           .text(function(d) {
@@ -155,19 +155,19 @@ d3.chart('BarChart', {
     // render the bars.
     var onEnter = function() {
       this.attr('x', function(d, i) {
-            return chart.x(i) - 0.5;
-          })
-          .attr('y', function(d) {
-            return chart.h - chart.margins.bottom - chart.margins.top - chart.y(chart.datamax - d.value) - 0.5;
-          })
-          .attr('val', function(d) {
-            return d.value;
-          })
-          .attr('width', chart.bar_width)
-          .attr('height', function(d) {
-            //return chart.h - chart.margins.bottom - chart.y(chart.datamax - d.value);
-            return chart.y(chart.datamax - d.value);
-          });
+        return chart.x(i) - 0.5;
+      })
+        .attr('y', function(d) {
+          return chart.h - chart.margins.bottom - chart.margins.top - chart.y(chart.datamax - d.value) - 0.5;
+        })
+        .attr('val', function(d) {
+          return d.value;
+        })
+        .attr('width', chart.bar_width)
+        .attr('height', function(d) {
+          //return chart.h - chart.margins.bottom - chart.y(chart.datamax - d.value);
+          return chart.y(chart.datamax - d.value);
+        });
     };
 
     chart.layer('bars').on('enter', onEnter);
@@ -176,7 +176,7 @@ d3.chart('BarChart', {
 
   // return or set the max of the data. otherwise
   // it will use the data max.
-  max : function(datamax) {
+  max: function(datamax) {
     if (!arguments.length) {
       return this.usermax;
     }
@@ -188,7 +188,7 @@ d3.chart('BarChart', {
     return this;
   },
 
-  width : function(newWidth) {
+  width: function(newWidth) {
     if (!arguments.length) {
       return this.w;
     }
@@ -196,7 +196,7 @@ d3.chart('BarChart', {
     this.w = newWidth;
 
     // adjust the x scale range
-    this.x =  d3.scale.linear()
+    this.x = d3.scale.linear()
       .range([this.margins.left, this.w - this.margins.right]);
 
     // adjust the base width
@@ -207,7 +207,7 @@ d3.chart('BarChart', {
     return this;
   },
 
-  height : function(newHeight) {
+  height: function(newHeight) {
     if (!arguments.length) {
       return this.h;
     }
@@ -226,4 +226,3 @@ d3.chart('BarChart', {
     return this;
   }
 });
-

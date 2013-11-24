@@ -29,8 +29,12 @@ module.exports = function(grunt) {
 
     browserify: {
       all: {
-        src: ['js/*.js', '!js/jquery.js', '!js/bartest.js'],
+        src: ['js/app.js', '!js/jquery.js', '!js/bartest.js'],
         dest: 'dist/js/app.js'
+      },
+      map: {
+        src: ['js/map.js'],
+        dest: 'dist/js/map.js'
       },
       options: {
         //transform: ['debowerify']
@@ -39,7 +43,7 @@ module.exports = function(grunt) {
 
     copy: {
       all: {
-        src: ['css/*.css', '*.html', 'images/**/*', 'js/jquery.js', 'bs/**/*', 'bootstrap/dist/**/*', '!Gruntfile.js'],
+        src: ['css/*.css', 'data/*', '*.html', 'images/**/*', 'js/jquery.js', 'bs/**/*', 'bootstrap/dist/**/*', '!Gruntfile.js'],
         dest: 'dist/',
       },
     },
@@ -48,6 +52,7 @@ module.exports = function(grunt) {
       options: {
         port: process.env.PORT || 3131,
         base: 'dist/',
+        hostname: '*'
       },
 
       all: {},
@@ -59,7 +64,7 @@ module.exports = function(grunt) {
       },
 
       assets: {
-        files: ['css/*.css', '*.html', 'js/**/*.js', '!js/jquery.js', 'images/**/*', 'js/jquery.js', 'bs/**/*', 'bootstrap/dist/**/*', '!Gruntfile.js'],
+        files: ['css/*.css', 'data/**/*','*.html', 'js/**/*.js', '!js/jquery.js', 'images/**/*', 'js/jquery.js', 'bs/**/*', 'bootstrap/dist/**/*', '!Gruntfile.js'],
         tasks: ['jshint', 'browserify', 'uglify', 'copy'],
       }
     }

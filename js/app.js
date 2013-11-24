@@ -14,8 +14,8 @@ var bchart = require('./bartest');
 	$(document).ready(function() {
 		var barchart = d3.select('#viz')
   .append('svg')
-  .attr('height', 300)
-  .attr('width', 800)
+  .attr('height', 150)
+  .attr('width', 400)
   .chart('BarChart');
 
 barchart.draw([

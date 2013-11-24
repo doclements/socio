@@ -1,0 +1,128 @@
+body {
+  background-color: #2C2A2A;
+}
+.subunit.SCT { fill: #2C2A2A; }
+.subunit.WLS { fill: #2C2A2A; }
+.subunit.NIR { fill: #2C2A2A; }
+.subunit.ENG { fill: #2C2A2A; }
+
+.subunit {
+    stroke: white;
+
+}
+.subunit:hover {
+  fill : #1EF2DB;
+  fill-opacity: 0.4;
+}
+.subunit.active {
+   fill: #1EF2DB;
+   fill-opacity: 0.4;
+}
+
+.subunit.IRL,
+.subunit-label.IRL {
+  display: none;
+}
+
+.subunit-boundary {
+  fill: #2C2A2A;
+}
+
+.subunit-boundary.IRL {
+  stroke: #aaa;
+}
+
+.subunit-label {
+  fill: white;
+  /*fill-opacity: .5;*/
+  font-size: 14px;
+  font-weight: 300;
+  text-anchor: middle;
+}
+
+.place,
+.place-label {
+  fill: #444;
+}
+#map_div {
+  height:505px;
+  width:405px;
+  border: solid 1px white;
+  float:left;
+}
+
+#top_chart {
+  padding-top:15px;
+  float:right;
+  display:block;
+  width:500px;
+  height:168px;
+    border: solid 1px white;
+
+
+}
+h2 {
+  font-family: sans-serif;
+  color:white;
+
+}
+.clear {
+  clear:both;
+  display:block;
+}
+#middle_chart {
+    padding-top:15px;
+
+  float:right;
+  display:block;
+  width:500px;
+  height:168px;
+    border: solid 1px white;
+}
+
+#explorer {
+  float:right;
+  display:block;
+  width:500px;
+  height:168px;
+    border: solid 1px white;
+    overflow: hidden;
+}
+
+
+
+/*text {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 6px;
+  pointer-events: none;
+  fill:white;
+}*/
+
+ .Barchart .label {
+    font-size: 10px;
+    fill: white;
+  }
+  .Barchart .ylabels .tick {
+    font-size: 10px;
+    fill:white;
+  pointer-events: none;
+  }
+  .Barchart .ylabels .tick line {
+    fill: white;
+    stroke: white;
+    stroke-width: 1px;
+    shape-rendering: crispEdges;
+  }
+  .Barchart path.domain {
+    fill: none;
+    stroke: white;
+    stroke-width: 1px;
+    shape-rendering: crispEdges;
+  }
+  .Barchart .bars rect.bar {
+    fill: #07C8E7;
+    fill-opacity: 0.6;
+    stroke: white;
+    stroke-width:1px;
+  }
+  //*[@id="middle_chart"]/svg/g[3]/line
